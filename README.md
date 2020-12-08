@@ -30,16 +30,13 @@ For this project I ended up mostly using about 4 data sets, most of which came f
 
 #### 1.2.1 Do ratings have any affect on the amount a movie grosses?
 
-Here I used the zippedData/imdb.title.ratings.csv.gz and the zippedData/bom.movie_gross.csv.gz data sets to find out if there was a relationship between having a high rating and a film making a large worldwide gross.  Tables had to be joined and cleaned by dropping rows with missing values, changing data types, and removing extra symbols like commas and dollar signs.
+Here I used the zippedData/imdb.title.ratings.csv.gz and the zippedData/bom.movie_gross.csv.gz data sets to find out if there was a relationship between having a high rating and a film making a large worldwide gross.  Tables had to be joined and cleaned by dropping rows with missing values, changing data types, and removing extra symbols like commas and dollar signs.  I first started by analyzing movie grosses v ratings and found no relationship in my initial scatter plot.  I then moved on to separating out by low, mid, and high range grosses. Still there was no relationship.  When I added in the tertiary variable of budget there was finally a relationship.  It is not clear from this the exact range that budget should fall within to ensure a successful film.  Other factors and confounding variables should be explored.  A mid range budget does still seem to yeild best results.
 
-
-![image_one]fig1.png
-
-![](fig1.png)
+![image_one](png_1.png)
 
 Key Findings:
 1. Ratings have essentially no impact on the financial success of a film.
-2. However budget does have some sort of effect on revenue. You do not necessarily need the highest budget, but a budget of at least 100 million will more than likely impact the success of a film positively.   
+2. However budget does have some sort of effect on revenue. You do not necessarily need the highest budget, however there seems to be a happy middle that needs to be investigated. 
     
 Recommendations:
 Do not worry about the critical reception of a film, instead focus and budgeting out for the resources and labor to make a good film.
@@ -48,6 +45,8 @@ Do not worry about the critical reception of a film, instead focus and budgeting
 #### 1.2.2 What time of year is the best time of year to release a film?
 
 For this I used zippedData/tn.movie_budgets.csv.gz data file.  It needed cleaning mostly by making separate columns that contained the release month by abbreviation and by numerical month of the year.  This helped me to organized the data by month and compare it to the worldwide gross.
+
+![image_two](png_2.png)
 
 Key Findings:
 
@@ -59,7 +58,9 @@ Plan to start filming and editing so that it will be ready for either the summer
 
 #### 1.2.3 Should you push to a worldwide market?
 
-For this I used the movie_budgets_df.head() data file.  It needed some cleaning to strip the numbers of any dollar signs or commas and get rid of any missing values.  I layerd two bar plots on top of eachother to get a visual representation of how much the non domestic gross makes up of the total gross.  I also categorized them by genre so we could see what genres make the most revenue as well as how much of the revenue was not domestic.
+For this I used the movie_budgets_df.head() data file.  It needed some cleaning to strip the numbers of any dollar signs or commas and get rid of any missing values.  I layerd two bar plots on top of eachother to get a visual representation of how much the non domestic gross makes up of the total gross. I also categorized them by genre so we could see what genres make the most revenue as well as how much of the revenue was not domestic.  Foreign gross made up a large portion of the total bar for the top four genres of films 
+
+![image_three](png_3.png)
 
 Key Findings:
 
