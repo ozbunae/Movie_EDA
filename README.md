@@ -1,20 +1,9 @@
 # Phase 1 Project
 
-You've made it all the way through the first phase of this course - take a minute to celebrate your awesomeness!
+## Project Description:
+I am collecting and cleaning data from credible websites with data on movie grossings, budgets, ratings, release dates, ext. to help Microsoft determine conditional factors that could help determine a successful movie to invest in. I am going to use data analysis to help Microsoft determine several conditions that may be condusive to producing a film with high returns.
 
-![awesome](https://raw.githubusercontent.com/learn-co-curriculum/dsc-phase-1-project/master/awesome.gif)
-
-Now you will put your new skills to use with a large end-of-Phase project! This project should take 20 to 30 hours to complete.
-
-## Project Overview
-
-For this project, you will use exploratory data analysis to generate insights for a business stakeholder.
-
-### Business Problem
-
-Microsoft sees all the big companies creating original video content and they want to get in on the fun. They have decided to create a new movie studio, but they don’t know anything about creating movies. You are charged with exploring what types of films are currently doing the best at the box office. You must then translate those findings into actionable insights that the head of Microsoft's new movie studio can use to help decide what type of films to create.
-
-### The Data
+### 1.1 Data:
 
 In the folder `zippedData` are movie datasets from:
 
@@ -23,42 +12,78 @@ In the folder `zippedData` are movie datasets from:
 * Rotten Tomatoes
 * TheMovieDB.org
 
-It is up to you to decide what data from this to use and how to use it. If you want to make this more challenging, you can scrape websites or make API calls to get additional data. If you are feeling overwhelmed or behind (e.g. struggled with the Phase 1 Code Challenge), we recommend you use only the following data files:
+Specific folders inclue:
+zippedData/imdb.name.basics.csv.gz
+zippedData/imdb.title.ratings.csv.gz
+zippedData/imdb.title.basics.csv.gz
+zippedData/bom.movie_gross.csv.gz
+zippedData/tn.movie_budgets.csv.gz
 
-* imdb.title.basics
-* imdb.title.ratings
-* bom.movie_gross
 
-## Deliverables
 
-There are three deliverables for this project:
 
-* A **GitHub repository**
-* A **Jupyter Notebook**
-* A **non-technical presentation**
+#### 1.1.1 Data Cleaning
 
-Review the "Project Submission & Review" page in the "Milestones Instructions" topic for instructions on creating and submitting your deliverables. Refer to the rubric associated with this assignment for specifications describing high-quality deliverables.
+For this project I ended up mostly using about 4 data sets, most of which came from IMDB.  The data sets combined were over 5000 entries and had a lot of NaN values to start.  I began by joining all of the tables into one large table, dropping all of the NaN values, and dropping duplicates.  This helped bring it down to about 2500 entries.  The main concern was that some of the value columns were strings with dollar signs and commmas so all of those columns had to be converted to integers and be stripped of any symbol that wasn't a number.  I also attempted to remove any outliers from the data by calling the the stats package and using the z-score to remove anything that had a z-score less than 3.
 
-### Key Points
+### 1.2 Key Findings:
 
-* **Your analysis should yield three concrete business recommendations.** The ultimate purpose of exploratory analysis is not just to learn about the data, but to help an organization perform better. Explicitly relate your findings to business needs by recommending actions that you think the business (Microsoft) should take.
+#### 1.2.1 Do ratings have any affect on the amount a movie grosses?
 
-* **Communicating about your work well is extremely important.** Your ability to provide value to an organization - or to land a job there - is directly reliant on your ability to communicate with them about what you have done and why it is valuable. Create a storyline your audience (the head of Microsoft's new movie studio) can follow by walking them through the steps of your process, highlighting the most important points and skipping over the rest.
+Here I used the zippedData/imdb.title.ratings.csv.gz and the zippedData/bom.movie_gross.csv.gz data sets to find out if there was a relationship between having a high rating and a film making a large worldwide gross.  Tables had to be joined and cleaned by dropping rows with missing values, changing data types, and removing extra symbols like commas and dollar signs.
 
-* **Use plenty of visualizations.** Visualizations are invaluable for exploring your data and making your findings accessible to a non-technical audience. Spotlight visuals in your presentation, but only ones that relate directly to your recommendations. Simple visuals are usually best (e.g. bar charts and line graphs), and don't forget to format them well (e.g. labels, titles).
 
-## Getting Started
+![image_one]fig1.png
 
-Please start by reviewing this assignment, the rubric at the bottom of it, and the "Project Submission & Review" page. If you have any questions, please ask your instructor ASAP.
+![](fig1.png)
 
-Next, we recommend you check out [the Phase 1 Project Templates and Examples repo](https://github.com/learn-co-curriculum/dsc-project-template) and use the MVP template for your project.
+Key Findings:
+1. Ratings have essentially no impact on the financial success of a film.
+2. However budget does have some sort of effect on revenue. You do not necessarily need the highest budget, but a budget of at least 100 million will more than likely impact the success of a film positively.   
+    
+Recommendations:
+Do not worry about the critical reception of a film, instead focus and budgeting out for the resources and labor to make a good film.
+    
 
-Alternatively, you can fork [the Phase 1 Project Repository](https://github.com/learn-co-curriculum/dsc-phase-1-project), clone it locally, and work in the `student.ipynb` file. Make sure to also add and commit a PDF of your presentation to your repository with a file name of `presentation.pdf`.
+#### 1.2.2 What time of year is the best time of year to release a film?
 
-## Project Submission and Review
+For this I used zippedData/tn.movie_budgets.csv.gz data file.  It needed cleaning mostly by making separate columns that contained the release month by abbreviation and by numerical month of the year.  This helped me to organized the data by month and compare it to the worldwide gross.
 
-Review the "Project Submission & Review" page in the "Milestones Instructions" topic to learn how to submit your project and how it will be reviewed. Your project must pass review for you to progress to the next Phase.
+Key Findings:
 
-## Summary
+1. The best times of year to release a film are June, July, and August, as well as November, December, and January.  
+2. Findings seem accurate because these times of the year are synonmys with staying indoors due to extreme heat or cold as well as holidays.  
 
-This project will give you a valuable opportunity to develop your data science skills using real-world data. The end-of-phase projects are a critical part of the program because they give you a chance to bring together all the skills you've learned, apply them to realistic projects for a business stakeholder, practice communication skills, and get feedback to help you improve. You've got this!
+Recommendations: 
+Plan to start filming and editing so that it will be ready for either the summer or winter.  
+
+#### 1.2.3 Should you push to a worldwide market?
+
+For this I used the movie_budgets_df.head() data file.  It needed some cleaning to strip the numbers of any dollar signs or commas and get rid of any missing values.  I layerd two bar plots on top of eachother to get a visual representation of how much the non domestic gross makes up of the total gross.  I also categorized them by genre so we could see what genres make the most revenue as well as how much of the revenue was not domestic.
+
+Key Findings:
+
+1. The movie genres with the highest revenues was Action, Adventure, Animation, and Mystery.
+2. A substantial portion of the revenue was from worldwide gross in almost every category.  It accounted for more than 50% of the revenue in most of the high grossing genres. 
+
+
+Recommendations:  Make an Action/Adventure/Mystry film that is targeted to a worldwide audience.
+
+### 1.3 Conclusion:
+
+After working with this data, I think it would be best to make a film that is Action, Adventure, Animation, or Mystery that is going to be released during the Summer or Winter holidays.  Make sure that the film is being marketed towards an international market.  Budget was one of the biggest discoveries of this research.  The biggest finding is that yes, budget does have an impact on revenue.  However, the largest budget does not yield the highest rating.  From my findings I feel like a budget of 100-250 million is the spot where most films had high revenue, but anything over that did not necissarily ensure higher ratings.
+
+
+### 1.4 What Next?
+
+Some of the questions to ask ourselves as we look at moving forward with this project based on our findings. 
+
+What is the exact range for creating a budget?  Can we narrow down what the budget should be within a few hundred thousand?  
+Does genre of movie correlate with time of year?
+Worldwide market trends by genre.
+Looking into specific Actors, Directors, ext. of each genre.
+
+
+```python
+
+```
