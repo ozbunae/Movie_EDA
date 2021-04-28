@@ -1,6 +1,18 @@
-# Phase 1 Project
+# Exploratory Data Analysis Project
 
 ## Project Description:
+This was my first project for Flatiron School.  It is an extremely simple project that was my first insight into creating Exploratory Data Analysis.
+
+According to a handbook published by the National Institute for Standards of Technology, EDA has 7 main benefits:
+Uncover underlying structure.
+Extract important variables.
+Detect outliers and anomalies.
+Test underlying assumptions.
+Develop parsimonious models.
+Determine optimal factor settings.
+Maximize insight into a data set.
+More plainly, the computer can quite literally process the computations of large sets of data through complicated algorithms on a scale that is hard for us to actually visualize in our heads. EDA provides a way for us to visually study esoterically large amounts of data and understand its architecture. The concept of EDA should be thought of as a philosophy for your initial approach to working with data.
+
 I am collecting and cleaning data from credible websites with data on movie grossings, budgets, ratings, release dates, ext. to help Microsoft determine conditional factors that could help determine a successful movie to invest in. I am going to use data analysis to help Microsoft determine several conditions that may be condusive to producing a film with high returns.
 
 ### 1.1 Data:
